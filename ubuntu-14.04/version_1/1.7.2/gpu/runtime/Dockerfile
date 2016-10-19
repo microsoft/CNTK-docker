@@ -1,4 +1,4 @@
-#Ubuntu 14.04, CUDA 7.5
+# Ubuntu 14.04, CUDA 7.5
 FROM nvidia/cuda:7.5-runtime
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
@@ -14,28 +14,24 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
         gcc \
         g++ \
         make \
-    # For Pillow
-        libfreetype6 \
-        libfreetype6-dev \
-        libjpeg62-dev \
-        libjpeg8 \
     # For scipy
         gfortran \
         libatlas-base-dev \
         libblas-dev \
         liblapack-dev \
+    # For Pillow
+        libfreetype6 \
+        libfreetype6-dev \
+        libjpeg62-dev \
+        libjpeg8 \
         && \
-    rm -rf /var/lib/apt/lists/*
-
-# For Pillow
-RUN apt-get update && apt-get build-dep -y --no-install-recommends \
+        apt-get build-dep -y --no-install-recommends \
         python-imaging \
         && \
     rm -rf /var/lib/apt/lists/*
 
 # Install Pillow and scipy
-RUN pip install Pillow
-RUN pip install scipy
+RUN pip install Pillow scipy && rm -rf /root/.cache/pip
 
 # Install Open MPI
 RUN OPENMPI_VERSION=1.10.3 && \
@@ -56,6 +52,8 @@ ENV PATH /cntk/cntk/bin:$PATH
 ENV LD_LIBRARY_PATH /cntk/cntk/lib:/cntk/cntk/dependencies/lib:$LD_LIBRARY_PATH
 
 # Clean-up
-RUN apt-get update && apt-get -y autoremove
+RUN apt-get update && apt-get -y autoremove \
+        && \
+    rm -rf /var/lib/apt/lists/*
 
 WORKDIR /cntk
