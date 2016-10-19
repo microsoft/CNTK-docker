@@ -1,4 +1,4 @@
-#FROM library/ubuntu:14.04
+#Ubuntu 14.04, CUDA 7.5
 FROM nvidia/cuda:7.5-runtime
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
@@ -49,10 +49,13 @@ ENV PATH /usr/local/mpi/bin:$PATH
 ENV LD_LIBRARY_PATH /usr/local/mpi/lib:$LD_LIBRARY_PATH
 
 # Get CNTK Binary Distribution
-RUN  wget -q -O - https://cntk.ai/BinaryDrop/CNTK-1-7-2-Linux-64bit-GPU.tar.gz | tar -xzf -
+RUN CNTK_VERSION=1-7-2 && \
+    wget -q -O - https://cntk.ai/BinaryDrop/CNTK-${CNTK_VERSION}-Linux-64bit-GPU.tar.gz | tar -xzf -
 
 ENV PATH /cntk/cntk/bin:$PATH
 ENV LD_LIBRARY_PATH /cntk/cntk/lib:/cntk/cntk/dependencies/lib:$LD_LIBRARY_PATH
 
 # Clean-up
 RUN apt-get update && apt-get -y autoremove
+
+WORKDIR /cntk
