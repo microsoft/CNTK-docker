@@ -1,3 +1,4 @@
 .gitattributes text
 *.md text
 *.h text
+Dockerfile text
