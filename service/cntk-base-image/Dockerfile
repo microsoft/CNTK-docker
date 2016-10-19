@@ -1,4 +1,4 @@
-FROM nvidia-extended-image
+FROM microsoft/cntk:nvidia-extended-image
 
 ENV OPENCV_VERSION="3.1.0" \
     OPENCV_VARIANT=noCuda \
