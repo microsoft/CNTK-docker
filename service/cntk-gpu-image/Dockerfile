@@ -1,4 +1,4 @@
-FROM cntk-base-image
+FROM microsoft/cntk:base-image
 
 ENV SCIPY_VERSION="0.18.0"
 
