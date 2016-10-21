@@ -1,1 +1,1 @@
-README will be here.
+This Repository is currently being set up and tested. We will announce the availability of CNTK Images at https://github.com/microsoft/cntk/wiki/News
