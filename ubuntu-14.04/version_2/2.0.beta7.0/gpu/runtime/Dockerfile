@@ -24,11 +24,16 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 
 # Install Open MPI
 RUN OPENMPI_VERSION="1.10.4" && \
-    wget -q -O - https://www.open-mpi.org/software/ompi/v1.10/downloads/openmpi-${OPENMPI_VERSION}.tar.gz | tar -xzf - && \
+    OPENMPI_SHA1="84d035e7ab1572e5ebc086049f05b694d2158844" && \
+    wget -q https://www.open-mpi.org/software/ompi/v1.10/downloads/openmpi-${OPENMPI_VERSION}.tar.gz && \
+    echo "$OPENMPI_SHA1 openmpi-${OPENMPI_VERSION}.tar.gz" | sha1sum --check --strict - && \
+    tar -xzf openmpi-${OPENMPI_VERSION}.tar.gz && \
     cd openmpi-${OPENMPI_VERSION} && \
     ./configure --prefix=/usr/local/mpi && \
     make -j"$(nproc)" install && \
-    rm -rf /openmpi-${OPENMPI_VERSION}
+    cd .. && \
+    rm -rf /openmpi-${OPENMPI_VERSION} && \
+    rm -rf openmpi-${OPENMPI_VERSION}.tar.gz
 
 ENV PATH=/usr/local/mpi/bin:$PATH \
     LD_LIBRARY_PATH=/usr/local/mpi/lib:$LD_LIBRARY_PATH
@@ -36,7 +41,9 @@ ENV PATH=/usr/local/mpi/bin:$PATH \
 # Install Anaconda
 ENV ANACONDA_PREFIX="/root/anaconda3"
 RUN ANACONDA_VERSION="3-4.1.1" && \
+    ANACONDA_MD5="d0dc08d241f83ffc763504db50008e5b" && \
     wget -q https://repo.continuum.io/archive/Anaconda${ANACONDA_VERSION}-Linux-x86_64.sh && \
+    echo "$ANACONDA_MD5 Anaconda${ANACONDA_VERSION}-Linux-x86_64.sh" | md5sum --check --strict - && \
     chmod a+x ./Anaconda${ANACONDA_VERSION}-Linux-x86_64.sh && \
     ./Anaconda${ANACONDA_VERSION}-Linux-x86_64.sh -b -p ${ANACONDA_PREFIX} && \
     rm -rf /Anaconda${ANACONDA_VERSION}-Linux-x86_64.sh 
@@ -102,8 +109,7 @@ MESSAGE\n\
 fi\n\
 " > /root/activate-cntk && \
     # Add login Welcome message
-    echo "\n\
-\# CNTK Welcome Message\n\
+    echo "\n# CNTK Welcome Message\n\
 cat <<MESSAGE\n\
 \n\
 ************************************************************\n\
