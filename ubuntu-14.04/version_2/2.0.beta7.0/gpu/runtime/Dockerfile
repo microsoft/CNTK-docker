@@ -1,5 +1,3 @@
-# General TODO: add packages SHA
-
 # Ubuntu 14.04, CUDA 7.5 (will be 8)
 # FROM nvidia/cuda:8.0-runtime
 FROM nvidia/cuda:7.5-runtime
@@ -12,9 +10,6 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
         gcc \
         g++ \
         make \
-    # For Anaconda
-    #    bzip2 \
-    #    coreutils \
     # For Image Reader
         libjasper1 \
         libjpeg8 \
@@ -126,10 +121,5 @@ Please checkout tutorials and examples here:\n\
 \n\
 MESSAGE\n\
 " >> /root/.bashrc
-
-# Clean-up
-# RUN apt-get update && apt-get -y autoremove \
-#        && \
-#    rm -rf /var/lib/apt/lists/*
 
 WORKDIR /root
