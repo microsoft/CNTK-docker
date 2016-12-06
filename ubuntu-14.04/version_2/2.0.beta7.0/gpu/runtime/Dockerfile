@@ -3,7 +3,7 @@
 FROM nvidia/cuda:7.5-runtime
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
-    # General and Python
+    # General
         ca-certificates \
         wget \
     # For Open MPI
@@ -14,6 +14,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
         libjasper1 \
         libjpeg8 \
         libpng12-0 \
+    # For Kaldi Reader
+        libgfortran3 \
         && \
     rm -rf /var/lib/apt/lists/*
 
