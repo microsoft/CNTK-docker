@@ -2,9 +2,9 @@
 FROM nvidia/cuda:8.0-runtime
 
 LABEL maintainer "MICROSOFT CORPORATION"
-LABEL com.microsoft.cntk.version="2.0.beta7.0"
+LABEL com.microsoft.cntk.version="2.0.beta8.0"
 
-ENV CNTK_VERSION="2.0.beta7.0"
+ENV CNTK_VERSION="2.0.beta8.0"
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
     # General
@@ -54,7 +54,7 @@ RUN ANACONDA_PREFIX="/root/anaconda3" && \
 
 # Get CNTK Binary Distribution
 RUN CNTK_VERSION_DASHED=$(echo $CNTK_VERSION | tr . -) && \
-    CNTK_SHA256="5e8ed1dfeee828ed84f9bdd29a3682c396eb92e3fb6b78afe6d6a2d7e51f9ca9" && \
+    CNTK_SHA256="44c2a738d6024cac7c7a9f141c2fc8c34d13e3068782083eadfd8674293e0643" && \
     wget -q https://cntk.ai/BinaryDrop/CNTK-${CNTK_VERSION_DASHED}-Linux-64bit-GPU.tar.gz && \
     echo "$CNTK_SHA256 CNTK-${CNTK_VERSION_DASHED}-Linux-64bit-GPU.tar.gz" | sha256sum --check --strict - && \
     tar -xzf CNTK-${CNTK_VERSION_DASHED}-Linux-64bit-GPU.tar.gz && \
