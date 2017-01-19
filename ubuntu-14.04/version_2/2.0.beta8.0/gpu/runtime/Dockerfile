@@ -22,7 +22,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
         libgfortran3 \
         && \
     # Clean-up
-    apt-get update && apt-get -y autoremove \
+    apt-get -y autoremove \
         && \
     rm -rf /var/lib/apt/lists/*
 
