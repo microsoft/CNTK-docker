@@ -10,7 +10,6 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     # General
         ca-certificates \
         wget \
-        # bzip2 \
     # For Open MPI
         gcc \
         g++ \
