@@ -1,5 +1,5 @@
 # Ubuntu 14.04, CUDA 8.0
-FROM nvidia/cuda:8.0-runtime
+FROM nvidia/cuda:8.0-runtime-ubuntu14.04
 
 LABEL maintainer "MICROSOFT CORPORATION"
 LABEL com.microsoft.cntk.version="2.0.beta7.0"

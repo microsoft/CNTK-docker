@@ -1,5 +1,5 @@
 # Ubuntu 14.04, CUDA 8.0
-FROM nvidia/cuda:8.0-runtime
+FROM nvidia/cuda:8.0-runtime-ubuntu14.04
 
 LABEL maintainer "MICROSOFT CORPORATION"
 LABEL com.microsoft.cntk.version="2.0.beta8.0"
@@ -10,7 +10,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     # General
         ca-certificates \
         wget \
-        bzip2 \
+        # bzip2 \
     # For Open MPI
         gcc \
         g++ \

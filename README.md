@@ -1,4 +1,4 @@
-The following tags default to images based on ubuntu:14.04 (CPU), nvidia/cuda:8.0-runtime (v.2.x GPU) and nvidia/cuda:7.5-runtime (v.1.x GPU).
+The following tags default to images based on ubuntu:14.04 (CPU), nvidia/cuda:8.0-runtime-ubuntu14.04 (v.2.x GPU) and nvidia/cuda:7.5-runtime (v.1.x GPU).
 
 **GPU ([NVIDIA Docker](https://github.com/nvidia/nvidia-docker) is required)**
 
