@@ -2,9 +2,9 @@
 FROM ubuntu:14.04
 
 LABEL maintainer "MICROSOFT CORPORATION"
-LABEL com.microsoft.cntk.version="2.0.beta8.0"
+LABEL com.microsoft.cntk.version="2.0.beta9.0"
 
-ENV CNTK_VERSION="2.0.beta8.0"
+ENV CNTK_VERSION="2.0.beta9.0"
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
     # General
@@ -54,7 +54,7 @@ RUN ANACONDA_PREFIX="/root/anaconda3" && \
 
 # Get CNTK Binary Distribution
 RUN CNTK_VERSION_DASHED=$(echo $CNTK_VERSION | tr . -) && \
-    CNTK_SHA256="7a05c1a5eb16fb46f9b50d32bf88afb11ebd53f49fe5a847a2f18f65cbea03a9" && \
+    CNTK_SHA256="bd382dbad3be16bac6d70e3a6647855f5db5168f1d4d6b5ff6e71c3d604358d2" && \
     wget -q https://cntk.ai/BinaryDrop/CNTK-${CNTK_VERSION_DASHED}-Linux-64bit-CPU-Only.tar.gz && \
     echo "$CNTK_SHA256 CNTK-${CNTK_VERSION_DASHED}-Linux-64bit-CPU-Only.tar.gz" | sha256sum --check --strict - && \
     tar -xzf CNTK-${CNTK_VERSION_DASHED}-Linux-64bit-CPU-Only.tar.gz && \
