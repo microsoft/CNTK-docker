@@ -50,7 +50,12 @@ RUN ANACONDA_PREFIX="/root/anaconda3" && \
     echo "$ANACONDA_SHA256 Anaconda${ANACONDA_VERSION}-Linux-x86_64.sh" | sha256sum --check --strict - && \
     chmod a+x ./Anaconda${ANACONDA_VERSION}-Linux-x86_64.sh && \
     ./Anaconda${ANACONDA_VERSION}-Linux-x86_64.sh -b -p ${ANACONDA_PREFIX} && \
-    rm -rf /Anaconda${ANACONDA_VERSION}-Linux-x86_64.sh 
+    rm -rf /Anaconda${ANACONDA_VERSION}-Linux-x86_64.sh && \
+    $ANACONDA_PREFIX/bin/conda clean --all --yes
+
+# Copy Anaconda setup script
+# TODO. Implement via modifying Binary Drop package
+COPY install-cntk-docker.sh /root
 
 # Get CNTK Binary Distribution
 RUN CNTK_VERSION_DASHED=$(echo $CNTK_VERSION | tr . -) && \
@@ -58,16 +63,13 @@ RUN CNTK_VERSION_DASHED=$(echo $CNTK_VERSION | tr . -) && \
     wget -q https://cntk.ai/BinaryDrop/CNTK-${CNTK_VERSION_DASHED}-Linux-64bit-GPU.tar.gz && \
     echo "$CNTK_SHA256 CNTK-${CNTK_VERSION_DASHED}-Linux-64bit-GPU.tar.gz" | sha256sum --check --strict - && \
     tar -xzf CNTK-${CNTK_VERSION_DASHED}-Linux-64bit-GPU.tar.gz && \
-    rm -f CNTK-${CNTK_VERSION_DASHED}-Linux-64bit-GPU.tar.gz
+    rm -f CNTK-${CNTK_VERSION_DASHED}-Linux-64bit-GPU.tar.gz && \
+    mv /root/install-cntk-docker.sh /cntk/Scripts/install/linux && \
+    /bin/bash /cntk/Scripts/install/linux/install-cntk-docker.sh && \
+    /root/anaconda3/bin/conda clean --all --yes && \
+    rm -rf /cntk/cntk/python
 
 ENV PATH=/cntk/cntk/bin:$PATH \
     LD_LIBRARY_PATH=/cntk/cntk/lib:/cntk/cntk/dependencies/lib:$LD_LIBRARY_PATH
-
-# Copy Anaconda setup script
-# TODO. Implement via modifying Binary Drop package
-COPY install-cntk-docker.sh /cntk/Scripts/install/linux
-
-# Set up Anaconda environment
-RUN /bin/bash /cntk/Scripts/install/linux/install-cntk-docker.sh
 
 WORKDIR /root
