@@ -8,7 +8,7 @@
 
 HOME=/root
 
-PY_VERSION=35
+PY_VERSION=27
 
 while [ $# -gt 0 ]; do
   case "$1" in
