@@ -2,7 +2,7 @@ The following tags default to images based on ubuntu:14.04 (CPU), nvidia/cuda:8.
 
 **GPU ([NVIDIA Docker](https://github.com/nvidia/nvidia-docker) is required)**
 
-* `2.0.beta10.0-runtime-gpu-python3.5-cuda8.0-cudnn5.1`, `latest` ([/ubuntu-14.04/version_2/2.0.beta10.0/gpu/runtime/Dockerfile](https://github.com/Microsoft/CNTK-docker/blob/v2.0.beta10.0/ubuntu-14.04/version_2/2.0.beta10.0/gpu/runtime/Dockerfile))
+* `2.0.beta10.0-gpu-python3.5-cuda8.0-cudnn5.1`, `latest` ([/ubuntu-14.04/version_2/2.0.beta10.0/gpu/runtime/Dockerfile](https://github.com/Microsoft/CNTK-docker/blob/v2.0.beta10.0/ubuntu-14.04/version_2/2.0.beta10.0/gpu/runtime/Dockerfile))
 * `2.0.beta9.0-runtime-gpu-python3.5-cuda8.0-cudnn5.1` ([/ubuntu-14.04/version_2/2.0.beta9.0/gpu/runtime/Dockerfile](https://github.com/Microsoft/CNTK-docker/blob/v2.0.beta9.0/ubuntu-14.04/version_2/2.0.beta9.0/gpu/runtime/Dockerfile))
 * `2.0.beta8.0-runtime-gpu-python3.4-cuda8.0-cudnn5.1`, ([/ubuntu-14.04/version_2/2.0.beta8.0/gpu/runtime/Dockerfile](https://github.com/Microsoft/CNTK-docker/blob/v2.0.beta8.0/ubuntu-14.04/version_2/2.0.beta8.0/gpu/runtime/Dockerfile))
 * `2.0.beta7.0-runtime-gpu-python3.4-cuda8.0-cudnn5.1` ([/ubuntu-14.04/version_2/2.0.beta7.0-Ubuntu14/gpu/runtime/Dockerfile](https://github.com/Microsoft/CNTK-docker/blob/v2.0.beta7.0-Ubuntu14/ubuntu-14.04/version_2/2.0.beta7.0/gpu/runtime/Dockerfile))
@@ -10,7 +10,7 @@ The following tags default to images based on ubuntu:14.04 (CPU), nvidia/cuda:8.
 
 **CPU**
 
-* `2.0.beta10.0-runtime-cpu-python3.5` ([/ubuntu-14.04/version_2/2.0.beta10.0/cpu/runtime/Dockerfile](https://github.com/Microsoft/CNTK-docker/blob/v2.0.beta10.0/ubuntu-14.04/version_2/2.0.beta9.0/cpu/runtime/Dockerfile))
+* `2.0.beta10.0-cpu-python3.5` ([/ubuntu-14.04/version_2/2.0.beta10.0/cpu/runtime/Dockerfile](https://github.com/Microsoft/CNTK-docker/blob/v2.0.beta10.0/ubuntu-14.04/version_2/2.0.beta9.0/cpu/runtime/Dockerfile))
 * `2.0.beta9.0-runtime-cpu-python3.5` ([/ubuntu-14.04/version_2/2.0.beta9.0/cpu/runtime/Dockerfile](https://github.com/Microsoft/CNTK-docker/blob/v2.0.beta9.0/ubuntu-14.04/version_2/2.0.beta9.0/cpu/runtime/Dockerfile))
 * `2.0.beta8.0-runtime-cpu-python3.4` ([/ubuntu-14.04/version_2/2.0.beta8.0/cpu/runtime/Dockerfile](https://github.com/Microsoft/CNTK-docker/blob/v2.0.beta8.0/ubuntu-14.04/version_2/2.0.beta8.0/cpu/runtime/Dockerfile))
 * `2.0.beta7.0-runtime-cpu-python3.4` ([/ubuntu-14.04/version_2/2.0.beta7.0/cpu/runtime/Dockerfile](https://github.com/Microsoft/CNTK-docker/blob/v2.0.beta7.0/ubuntu-14.04/version_2/2.0.beta7.0/cpu/runtime/Dockerfile))
