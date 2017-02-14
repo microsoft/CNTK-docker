@@ -1,1 +1,0 @@
-This folder contains service images used in the CNTK development and automated build process. While you are welcome to use any of the images in this folder we advise you to first get acquainted with the images stored in other root folders of this repository.
