@@ -233,26 +233,26 @@ To deactivate the environment run
 FINALMESSAGE
 
 ###########################################
-# Add login Welcome message 
+# Add login Welcome message
+# and call CNTK activation on login 
 
-cat >> /root/.bashrc <<WELCOMEMESSAGE
+cat >> /root/.bashrc <<WELCOMEACTIVATECNTK
 # CNTK Welcome Message
 cat <<MESSAGE
 
 ************************************************************
 Welcome to Microsoft Cognitive Toolkit (CNTK) v. $CNTK_VERSION
 
-To activate CNTK Python Environment run
+Activating CNTK environment...
+
+(Use command
 
   source "$PWD/$ACTIVATE_SCRIPT_NAME"
 
-Please checkout tutorials and examples here:
-  $CNTK_TUTORIALS_PATH
-  $CNTK_EXAMPLES_PATH
-
-************************************************************
-
+to activate manually when needed)
 MESSAGE
-WELCOMEMESSAGE
+
+source "$PWD/$ACTIVATE_SCRIPT_NAME"
+WELCOMEACTIVATECNTK
 
 # vim:set expandtab shiftwidth=2 tabstop=2:
