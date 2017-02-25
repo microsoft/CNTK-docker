@@ -6,11 +6,21 @@
 # for full license information.
 # ==============================================================================
 
-HOME=/root
+SCRIPT_NAME="$(basename "${BASH_SOURCE[0]}")"
+SCRIPT_DIR="$(readlink -f "$(dirname "${BASH_SOURCE[0]}")")"
 
+PARSED_ARGS=$(getopt -o '' --long py-version:,anaconda-basepath: -n "$SCRIPT_NAME" -- "$@")
+
+[ $? != 0 ] && {
+  echo Terminating...
+  exit 1
+}
+
+eval set -- "$PARSED_ARGS"
 PY_VERSION=35
+ANACONDA_PREFIX="$HOME/anaconda3"
 
-while [ $# -gt 0 ]; do
+while true; do
   case "$1" in
     --py-version)
       case "$2" in
@@ -18,25 +28,31 @@ while [ $# -gt 0 ]; do
           PY_VERSION="$2"
           ;;
         *)
-          echo Invalid or missing value for --py-version option, please specify 27, 34, or 35.
+          echo Invalid value for --py-version option, please specify 27, 34, or 35.
           exit 1
           ;;
       esac
-      shift # extra shift
+      shift 2
       ;;
-    *)
-      echo Unknown option $1
-      exit 1
+    --anaconda-basepath)
+      ANACONDA_PREFIX="$2"
+      shift 2
+      ;;
+    --)
+      shift
+      break
       ;;
   esac
-  shift
 done
+
+[ $# = 0 ] || {
+  echo Extra parameters detected: $*
+  exit 1
+}
 
 # Log steps, stop on error
 # TODO cut down on logging
 set -x -e -o pipefail
-
-SCRIPT_DIR="$(readlink -f "$(dirname "${BASH_SOURCE[0]}")")"
 
 # Go to the drop root
 cd "$SCRIPT_DIR/../../.."
@@ -51,9 +67,9 @@ CNTK_EXAMPLES_PATH="$PWD/Examples"
 CNTK_TUTORIALS_PATH="$PWD/Tutorials"
 CNTK_BINARY="$CNTK_BIN_PATH/cntk"
 CNTK_PY_ENV_FILE="$SCRIPT_DIR/conda-linux-cntk-py$PY_VERSION-environment.yml"
-CNTK_WHEEL_PATH="cntk/python/cntk-2.0.beta11.0-$PYWHEEL_QUALIFIER-linux_x86_64.whl"
+CNTK_WHEEL_PATH="cntk/python/cntk-2.0.beta12.0-$PYWHEEL_QUALIFIER-linux_x86_64.whl"
 
-test -d "$CNTK_BIN_PATH" && test -d "$CNTK_LIB_PATH" && test -d "$CNTK_DEP_LIB_PATH" && 
+test -d "$CNTK_BIN_PATH" && test -d "$CNTK_LIB_PATH" && test -d "$CNTK_DEP_LIB_PATH" &&
 test -d "$CNTK_TUTORIALS_PATH" &&
 test -d "$CNTK_EXAMPLES_PATH" && test -x "$CNTK_BINARY" &&
 test -f "$CNTK_PY_ENV_FILE" && test -f "$CNTK_WHEEL_PATH" || {
@@ -73,58 +89,58 @@ test -f "$CNTK_PY_ENV_FILE" && test -f "$CNTK_WHEEL_PATH" || {
 
 # Anaconda download / install dependencies
 # [coreutils for sha{1,256}sum]
-# PACKAGES="bzip2 wget coreutils"
+PACKAGES="bzip2 wget coreutils"
 
 # CNTK run-time dependencies (OpenMPI)
-# if [[ "$(lsb_release -i)" =~ :.*Ubuntu ]] && [[ "$(lsb_release -r)" =~ :.*14\.04 ]]; then
+if [[ "$(lsb_release -i)" =~ :.*Ubuntu ]] && [[ "$(lsb_release -r)" =~ :.*14\.04 ]]; then
   # On Ubuntu 14.04: need to build ourselves, openmpi-bin is too old
-#  BUILD_OPENMPI=1
-#  PACKAGES+=" wget ca-certificates build-essential"
-#else
+  # Line below modified for Docker - OpenMPI already installed
+  BUILD_OPENMPI=0
+  # PACKAGES+=" wget ca-certificates build-essential"
+else
   # Else: try with openmpi-bin
-#  BUILD_OPENMPI=0
-#  PACKAGES+=" openmpi-bin"
-#fi
+  BUILD_OPENMPI=0
+  PACKAGES+=" openmpi-bin"
+fi
 
 # Additional packages for ImageReader
-#PACKAGES+=" libjasper1 libjpeg8 libpng12-0"
+PACKAGES+=" libjasper1 libjpeg8 libpng12-0"
 
-#if dpkg -s $PACKAGES 1>/dev/null 2>/dev/null; then
-#  printf "Packages already installed, skipping.\n"
-#else
-#  sudo apt-get update
-#  sudo apt-get install -y --no-install-recommends $PACKAGES
-#fi
+if dpkg -s $PACKAGES 1>/dev/null 2>/dev/null; then
+  printf "Packages already installed, skipping.\n"
+else
+  sudo apt-get update
+  sudo apt-get install -y --no-install-recommends $PACKAGES
+fi
 
 #########################################
 # On Ubuntu 14.04: OpenMPI build
 
-#if [ "$BUILD_OPENMPI" = "1" ]; then
-#  OPENMPI_PREFIX="$HOME/openmpi"
-#  if [ -d "$OPENMPI_PREFIX" ]; then
-#    printf "Path '%s' already exists, skipping OpenMPI build\n" "$OPENMPI_PREFIX"
-#  else
-#    OPENMPI_MAJOR_MINOR_VERSION=1.10
-#    OPENMPI_PATCH_VERSION=4
-#    OPENMPI_SHA1=1676a7da6cc8cde1d46f6296f38d575249b46cd9
-#    OPENMPI_VERSION=$OPENMPI_MAJOR_MINOR_VERSION.$OPENMPI_PATCH_VERSION
-#    OPENMPI=openmpi-$OPENMPI_VERSION
-#    wget --continue --no-verbose https://www.open-mpi.org/software/ompi/v$OPENMPI_MAJOR_MINOR_VERSION/downloads/$OPENMPI.tar.bz2
-#    echo "$OPENMPI_SHA1  $OPENMPI.tar.bz2" | sha1sum -c --strict -
-#    tar -xjf $OPENMPI.tar.bz2
-#    cd $OPENMPI
-#    ./configure --prefix=$OPENMPI_PREFIX
-#    make -j $(nproc) install
-#    cd ..
-#    rm -rf $OPENMPI
-#  fi
-#fi
+if [ "$BUILD_OPENMPI" = "1" ]; then
+  OPENMPI_PREFIX="$HOME/openmpi"
+  if [ -d "$OPENMPI_PREFIX" ]; then
+    printf "Path '%s' already exists, skipping OpenMPI build\n" "$OPENMPI_PREFIX"
+  else
+    OPENMPI_MAJOR_MINOR_VERSION=1.10
+    OPENMPI_PATCH_VERSION=4
+    OPENMPI_SHA1=1676a7da6cc8cde1d46f6296f38d575249b46cd9
+    OPENMPI_VERSION=$OPENMPI_MAJOR_MINOR_VERSION.$OPENMPI_PATCH_VERSION
+    OPENMPI=openmpi-$OPENMPI_VERSION
+    wget --continue --no-verbose https://www.open-mpi.org/software/ompi/v$OPENMPI_MAJOR_MINOR_VERSION/downloads/$OPENMPI.tar.bz2
+    echo "$OPENMPI_SHA1  $OPENMPI.tar.bz2" | sha1sum -c --strict -
+    tar -xjf $OPENMPI.tar.bz2
+    cd $OPENMPI
+    ./configure --prefix=$OPENMPI_PREFIX
+    make -j $(nproc) install
+    cd ..
+    rm -rf $OPENMPI
+  fi
+fi
 
 #########################################
 # Anaconda install and environment setup
 # TODO consider miniconda
 
-ANACONDA_PREFIX="$HOME/anaconda3"
 if [ -d "$ANACONDA_PREFIX" ]; then
   printf "Path '%s' already exists, skipping Anaconda install\n" "$ANACONDA_PREFIX"
 else
@@ -137,11 +153,11 @@ else
   "./$ANACONDA" -b -p "$ANACONDA_PREFIX"
 fi
 
-CONDA="$HOME/anaconda3/bin/conda"
+CONDA="$ANACONDA_PREFIX/bin/conda"
 [ -x "$CONDA" ]
-PY_ACTIVATE="$HOME/anaconda3/bin/activate"
+PY_ACTIVATE="$ANACONDA_PREFIX/bin/activate"
 [ -x "$PY_ACTIVATE" ]
-PY_DEACTIVATE="$HOME/anaconda3/bin/deactivate"
+PY_DEACTIVATE="$ANACONDA_PREFIX/bin/deactivate"
 [ -x "$PY_DEACTIVATE" ]
 
 CNTK_PY_ENV_NAME="cntk-py$PY_VERSION"
@@ -188,8 +204,8 @@ if [ -z "\$BASH_VERSION" ]; then
 elif [ "\$(basename "\$0" 2> /dev/null)" == "$ACTIVATE_SCRIPT_NAME" ]; then
   echo Error: this script is meant to be sourced. Run 'source activate-cntk'
 else
-  #export PATH="$CNTK_BIN_PATH:\$PATH"
-  #export LD_LIBRARY_PATH="$LD_LIBRARY_PATH_SETTING"
+  export PATH="$CNTK_BIN_PATH:\$PATH"
+  export LD_LIBRARY_PATH="$LD_LIBRARY_PATH_SETTING"
   source "$PY_ACTIVATE" "$CNTK_PY_ENV_PREFIX"
 
   cat <<MESSAGE
@@ -234,7 +250,7 @@ FINALMESSAGE
 
 ###########################################
 # Add login Welcome message
-# and call CNTK activation on login 
+# and call CNTK activation on login
 
 cat >> /root/.bashrc <<WELCOMEACTIVATECNTK
 # CNTK Welcome Message
@@ -245,11 +261,9 @@ Welcome to Microsoft Cognitive Toolkit (CNTK) v. $CNTK_VERSION
 
 Activating CNTK environment...
 
-(Use command
+(Use command below to activate manually when needed)
 
   source "$PWD/$ACTIVATE_SCRIPT_NAME"
-
-to activate manually when needed)
 MESSAGE
 
 source "$PWD/$ACTIVATE_SCRIPT_NAME"

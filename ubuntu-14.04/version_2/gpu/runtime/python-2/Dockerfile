@@ -2,9 +2,9 @@
 FROM nvidia/cuda:8.0-runtime-ubuntu14.04
 
 LABEL maintainer "MICROSOFT CORPORATION"
-LABEL com.microsoft.cntk.version="2.0.beta11.0"
+LABEL com.microsoft.cntk.version="2.0.beta12.0"
 
-ENV CNTK_VERSION="2.0.beta11.0"
+ENV CNTK_VERSION="2.0.beta12.0"
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
     # General
@@ -59,7 +59,7 @@ COPY install-cntk-docker.sh /root
 
 # Get CNTK Binary Distribution
 RUN CNTK_VERSION_DASHED=$(echo $CNTK_VERSION | tr . -) && \
-    CNTK_SHA256="2e60909020a0f553431dc7f7818401cc1bb2c99eef307d65bb552c497993593a" && \
+    CNTK_SHA256="a3e1f672b04f49640035ecde5cf0daf35c45a5bfe53e4b17c32f0893a32cc110" && \
     wget -q https://cntk.ai/BinaryDrop/CNTK-${CNTK_VERSION_DASHED}-Linux-64bit-GPU.tar.gz && \
     echo "$CNTK_SHA256 CNTK-${CNTK_VERSION_DASHED}-Linux-64bit-GPU.tar.gz" | sha256sum --check --strict - && \
     tar -xzf CNTK-${CNTK_VERSION_DASHED}-Linux-64bit-GPU.tar.gz && \

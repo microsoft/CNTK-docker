@@ -2,9 +2,9 @@
 FROM ubuntu:14.04
 
 LABEL maintainer "MICROSOFT CORPORATION"
-LABEL com.microsoft.cntk.version="2.0.beta11.0"
+LABEL com.microsoft.cntk.version="2.0.beta12.0"
 
-ENV CNTK_VERSION="2.0.beta11.0"
+ENV CNTK_VERSION="2.0.beta12.0"
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
     # General
@@ -59,7 +59,7 @@ COPY install-cntk-docker.sh /root
 
 # Get CNTK Binary Distribution
 RUN CNTK_VERSION_DASHED=$(echo $CNTK_VERSION | tr . -) && \
-    CNTK_SHA256="d275d41ee6a131855065a9b50b6289dc43afe6f39aeb56ce92e4238dc317e062" && \
+    CNTK_SHA256="033c5da4b3034f51d0bde6f0d926f7d075a146b16e7c6148a38cecba928efc6c" && \
     wget -q https://cntk.ai/BinaryDrop/CNTK-${CNTK_VERSION_DASHED}-Linux-64bit-CPU-Only.tar.gz && \
     echo "$CNTK_SHA256 CNTK-${CNTK_VERSION_DASHED}-Linux-64bit-CPU-Only.tar.gz" | sha256sum --check --strict - && \
     tar -xzf CNTK-${CNTK_VERSION_DASHED}-Linux-64bit-CPU-Only.tar.gz && \
