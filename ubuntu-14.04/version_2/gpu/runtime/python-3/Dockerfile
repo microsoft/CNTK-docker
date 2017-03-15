@@ -59,7 +59,7 @@ COPY install-cntk-docker.sh /root
 
 # Get CNTK Binary Distribution
 RUN CNTK_VERSION_DASHED=$(echo $CNTK_VERSION | tr . -) && \
-    CNTK_SHA256="a3e1f672b04f49640035ecde5cf0daf35c45a5bfe53e4b17c32f0893a32cc110" && \
+    CNTK_SHA256="26c4f2fb38b6e96f2b94ea1561e57db1bc35f98be36392058116a030bcab1dfc" && \
     wget -q https://cntk.ai/BinaryDrop/CNTK-${CNTK_VERSION_DASHED}-Linux-64bit-GPU.tar.gz && \
     echo "$CNTK_SHA256 CNTK-${CNTK_VERSION_DASHED}-Linux-64bit-GPU.tar.gz" | sha256sum --check --strict - && \
     tar -xzf CNTK-${CNTK_VERSION_DASHED}-Linux-64bit-GPU.tar.gz && \
