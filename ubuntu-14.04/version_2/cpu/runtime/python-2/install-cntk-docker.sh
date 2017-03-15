@@ -291,7 +291,6 @@ Activating CNTK environment...
 (Use command below to activate manually when needed)
 
   source "$PWD/$ACTIVATE_SCRIPT_NAME"
-
 MESSAGE
 
 source "$PWD/$ACTIVATE_SCRIPT_NAME"
