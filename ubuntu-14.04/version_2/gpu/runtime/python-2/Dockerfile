@@ -67,6 +67,8 @@ RUN CNTK_VERSION_DASHED=$(echo $CNTK_VERSION | tr . -) && \
     mv /root/install-cntk-docker.sh /cntk/Scripts/install/linux && \
     /bin/bash /cntk/Scripts/install/linux/install-cntk-docker.sh && \
     /root/anaconda3/bin/conda clean --all --yes && \
+    # Remove Python Wheels "just in case"
+    # As of v2.0 Beta 15 they should not be a part of the Drop
     rm -rf /cntk/cntk/python
 
 ENV PATH=/cntk/cntk/bin:$PATH \
