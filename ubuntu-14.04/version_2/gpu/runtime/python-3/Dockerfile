@@ -2,9 +2,9 @@
 FROM nvidia/cuda:8.0-runtime-ubuntu14.04
 
 LABEL maintainer "MICROSOFT CORPORATION"
-LABEL com.microsoft.cntk.version="2.0.rc1"
+LABEL com.microsoft.cntk.version="2.0rc1"
 
-ENV CNTK_VERSION="2.0.rc1"
+ENV CNTK_VERSION="2.0rc1"
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
     # General
