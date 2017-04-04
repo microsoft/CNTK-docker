@@ -37,7 +37,7 @@ The following tags default to images based on ubuntu:14.04 (CPU), nvidia/cuda:8.
 
 **CPU**
 
-* `2.0.rc1-gpu-python2.7-cuda8.0-cudnn5.1` ([/ubuntu-14.04/version_2/gpu/runtime/python-2/Dockerfile](https://github.com/Microsoft/CNTK-docker/blob/v2.0.rc1/ubuntu-14.04/version_2/gpu/runtime/python-2/Dockerfile))
+* `2.0.rc1-cpu-python2.7` ([/ubuntu-14.04/version_2/cpu/runtime/python-2/Dockerfile](https://github.com/Microsoft/CNTK-docker/blob/v2.0.rc1/ubuntu-14.04/version_2/cpu/runtime/python-2/Dockerfile))
 * `2.0.beta15.0-cpu-python2.7` ([/ubuntu-14.04/version_2/cpu/runtime/python-2/Dockerfile](https://github.com/Microsoft/CNTK-docker/blob/v2.0.beta15.0/ubuntu-14.04/version_2/cpu/runtime/python-2/Dockerfile))
 * `2.0.beta12.0-cpu-python2.7` ([/ubuntu-14.04/version_2/cpu/runtime/python-2/Dockerfile](https://github.com/Microsoft/CNTK-docker/blob/v2.0.beta12.0/ubuntu-14.04/version_2/cpu/runtime/python-2/Dockerfile))
 * `2.0.beta11.0-cpu-python2.7` ([/ubuntu-14.04/version_2/2.0.beta11.0/cpu/runtime/python-2.7/Dockerfile](https://github.com/Microsoft/CNTK-docker/blob/v2.0.beta11.0/ubuntu-14.04/version_2/2.0.beta11.0/cpu/runtime/python-2.7/Dockerfile))
