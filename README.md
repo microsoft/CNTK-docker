@@ -5,6 +5,7 @@ The following tags default to images based on ubuntu:14.04 (CPU), nvidia/cuda:8.
 
 **GPU ([NVIDIA Docker](https://github.com/nvidia/nvidia-docker) is required)**
 
+* `2.0.rc3-gpu-python3.5-cuda8.0-cudnn5.1`, `latest` ([/ubuntu-14.04/version_2/gpu/runtime/python-3/Dockerfile](https://github.com/Microsoft/CNTK-docker/blob/v2.0.rc3/ubuntu-14.04/version_2/gpu/runtime/python-3/Dockerfile))
 * `2.0.rc2-gpu-python3.5-cuda8.0-cudnn5.1`, `latest` ([/ubuntu-14.04/version_2/gpu/runtime/python-3/Dockerfile](https://github.com/Microsoft/CNTK-docker/blob/v2.0.rc2/ubuntu-14.04/version_2/gpu/runtime/python-3/Dockerfile))
 * `2.0.rc1-gpu-python3.5-cuda8.0-cudnn5.1`, `latest` ([/ubuntu-14.04/version_2/gpu/runtime/python-3/Dockerfile](https://github.com/Microsoft/CNTK-docker/blob/v2.0.rc1/ubuntu-14.04/version_2/gpu/runtime/python-3/Dockerfile))
 * `2.0.beta15.0-gpu-python3.5-cuda8.0-cudnn5.1` ([/ubuntu-14.04/version_2/gpu/runtime/python-3/Dockerfile](https://github.com/Microsoft/CNTK-docker/blob/v2.0.beta15.0/ubuntu-14.04/version_2/gpu/runtime/python-3/Dockerfile))
@@ -17,6 +18,7 @@ The following tags default to images based on ubuntu:14.04 (CPU), nvidia/cuda:8.
 
 **CPU**
 
+* `2.0.rc3-cpu-python3.5` ([/ubuntu-14.04/version_2/cpu/runtime/python-3/Dockerfile](https://github.com/Microsoft/CNTK-docker/blob/v2.0.rc3/ubuntu-14.04/version_2/cpu/runtime/python-3/Dockerfile))
 * `2.0.rc2-cpu-python3.5` ([/ubuntu-14.04/version_2/cpu/runtime/python-3/Dockerfile](https://github.com/Microsoft/CNTK-docker/blob/v2.0.rc2/ubuntu-14.04/version_2/cpu/runtime/python-3/Dockerfile))
 * `2.0.rc1-cpu-python3.5` ([/ubuntu-14.04/version_2/cpu/runtime/python-3/Dockerfile](https://github.com/Microsoft/CNTK-docker/blob/v2.0.rc1/ubuntu-14.04/version_2/cpu/runtime/python-3/Dockerfile))
 * `2.0.beta15.0-cpu-python3.5` ([/ubuntu-14.04/version_2/cpu/runtime/python-3/Dockerfile](https://github.com/Microsoft/CNTK-docker/blob/v2.0.beta15.0/ubuntu-14.04/version_2/cpu/runtime/python-3/Dockerfile))
@@ -31,6 +33,7 @@ The following tags default to images based on ubuntu:14.04 (CPU), nvidia/cuda:8.
 
 **GPU ([NVIDIA Docker](https://github.com/nvidia/nvidia-docker) is required)**
 
+* `2.0.rc3-gpu-python2.7-cuda8.0-cudnn5.1` ([/ubuntu-14.04/version_2/gpu/runtime/python-2/Dockerfile](https://github.com/Microsoft/CNTK-docker/blob/v2.0.rc3/ubuntu-14.04/version_2/gpu/runtime/python-2/Dockerfile))
 * `2.0.rc2-gpu-python2.7-cuda8.0-cudnn5.1` ([/ubuntu-14.04/version_2/gpu/runtime/python-2/Dockerfile](https://github.com/Microsoft/CNTK-docker/blob/v2.0.rc2/ubuntu-14.04/version_2/gpu/runtime/python-2/Dockerfile))
 * `2.0.rc1-gpu-python2.7-cuda8.0-cudnn5.1` ([/ubuntu-14.04/version_2/gpu/runtime/python-2/Dockerfile](https://github.com/Microsoft/CNTK-docker/blob/v2.0.rc1/ubuntu-14.04/version_2/gpu/runtime/python-2/Dockerfile))
 * `2.0.beta15.0-gpu-python2.7-cuda8.0-cudnn5.1` ([/ubuntu-14.04/version_2/gpu/runtime/python-2/Dockerfile](https://github.com/Microsoft/CNTK-docker/blob/v2.0.beta15.0/ubuntu-14.04/version_2/gpu/runtime/python-2/Dockerfile))
@@ -40,6 +43,7 @@ The following tags default to images based on ubuntu:14.04 (CPU), nvidia/cuda:8.
 
 **CPU**
 
+* `2.0.rc3-cpu-python2.7` ([/ubuntu-14.04/version_2/cpu/runtime/python-2/Dockerfile](https://github.com/Microsoft/CNTK-docker/blob/v2.0.rc3/ubuntu-14.04/version_2/cpu/runtime/python-2/Dockerfile))
 * `2.0.rc2-cpu-python2.7` ([/ubuntu-14.04/version_2/cpu/runtime/python-2/Dockerfile](https://github.com/Microsoft/CNTK-docker/blob/v2.0.rc2/ubuntu-14.04/version_2/cpu/runtime/python-2/Dockerfile))
 * `2.0.rc1-cpu-python2.7` ([/ubuntu-14.04/version_2/cpu/runtime/python-2/Dockerfile](https://github.com/Microsoft/CNTK-docker/blob/v2.0.rc1/ubuntu-14.04/version_2/cpu/runtime/python-2/Dockerfile))
 * `2.0.beta15.0-cpu-python2.7` ([/ubuntu-14.04/version_2/cpu/runtime/python-2/Dockerfile](https://github.com/Microsoft/CNTK-docker/blob/v2.0.beta15.0/ubuntu-14.04/version_2/cpu/runtime/python-2/Dockerfile))
