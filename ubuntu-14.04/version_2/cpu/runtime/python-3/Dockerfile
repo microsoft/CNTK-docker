@@ -2,9 +2,9 @@
 FROM ubuntu:14.04
 
 LABEL maintainer "MICROSOFT CORPORATION"
-LABEL com.microsoft.cntk.version="2.0rc3"
+LABEL com.microsoft.cntk.version="2.0"
 
-ENV CNTK_VERSION="2.0rc3"
+ENV CNTK_VERSION="2.0"
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
     # General
@@ -18,7 +18,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 
 # Get CNTK Binary Distribution
 RUN CNTK_VERSION_DASHED=$(echo $CNTK_VERSION | tr . -) && \
-    CNTK_SHA256="bf48c37e34075caee8a25247d7952ff5b64ebc53c81e138e7a8295100a8aac04" && \
+    CNTK_SHA256="INSERT SHA HERE" && \
     wget -q https://cntk.ai/BinaryDrop/CNTK-${CNTK_VERSION_DASHED}-Linux-64bit-CPU-Only.tar.gz && \
     echo "$CNTK_SHA256 CNTK-${CNTK_VERSION_DASHED}-Linux-64bit-CPU-Only.tar.gz" | sha256sum --check --strict - && \
     tar -xzf CNTK-${CNTK_VERSION_DASHED}-Linux-64bit-CPU-Only.tar.gz && \
