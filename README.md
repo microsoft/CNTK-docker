@@ -1,3 +1,5 @@
+**See how to use the images in [CNTK Wiki](https://docs.microsoft.com/en-us/cognitive-toolkit/CNTK-Docker-Containers).**
+
 The following tags default to images based on ubuntu:14.04 (CPU), nvidia/cuda:8.0-runtime-ubuntu14.04 (v.2.x GPU) and nvidia/cuda:7.5-runtime (v.1.x GPU).
 
 ### Version 2 Images
