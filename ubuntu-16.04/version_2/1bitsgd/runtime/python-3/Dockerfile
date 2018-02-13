@@ -6,6 +6,9 @@ LABEL maintainer "MICROSOFT CORPORATION" \
 
 ENV CNTK_VERSION="2.4"
 
+# Install CNTK as the default backend for Keras
+ENV KERAS_BACKEND=cntk
+
 RUN apt-get update && apt-get install -y --no-install-recommends \
     # General
         ca-certificates \
