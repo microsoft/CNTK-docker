@@ -1,6 +1,29 @@
 **See how to use the images in [CNTK Wiki](https://docs.microsoft.com/en-us/cognitive-toolkit/CNTK-Docker-Containers).**
 
-### Version 2 Images (CNTK v2.5.1 and above)
+### Version 2 Images (CNTK v2.6 and above)
+The following tags default to images based on ubuntu:16.04 (CPU) and nvidia/cuda:9.0-runtime-ubuntu16.04 (v.2.x GPU).
+
+#### Python 3.5
+
+**GPU ([NVIDIA Docker](https://github.com/nvidia/nvidia-docker) is required)**
+
+* `2.6-gpu-python3.5-cuda9.0-cudnn7.0`, `latest` ([/ubuntu-16.04/version_2/gpu/runtime/python-3/Dockerfile](https://github.com/Microsoft/CNTK-docker/blob/v2.6/ubuntu-16.04/version_2/gpu/runtime/python-3/Dockerfile))
+
+**CPU**
+
+* `2.6-cpu-python3.5` ([/ubuntu-16.04/version_2/cpu/runtime/python-3/Dockerfile](https://github.com/Microsoft/CNTK-docker/blob/v2.6/ubuntu-16.04/version_2/cpu/runtime/python-3/Dockerfile))
+
+#### Python 2.7
+
+**GPU ([NVIDIA Docker](https://github.com/nvidia/nvidia-docker) is required)**
+
+* `2.6-gpu-python2.7-cuda9.0-cudnn7.0` ([/ubuntu-16.04/version_2/gpu/runtime/python-2/Dockerfile](https://github.com/Microsoft/CNTK-docker/blob/v2.6/ubuntu-16.04/version_2/gpu/runtime/python-2/Dockerfile))
+
+**CPU**
+
+* `2.6-cpu-python2.7` ([/ubuntu-16.04/version_2/cpu/runtime/python-2/Dockerfile](https://github.com/Microsoft/CNTK-docker/blob/v2.6/ubuntu-16.04/version_2/cpu/runtime/python-2/Dockerfile))
+
+### Version 2 Images (CNTK v2.5.1)
 The following tags default to images based on ubuntu:16.04 (CPU) and nvidia/cuda:9.0-runtime-ubuntu16.04 (v.2.x GPU).
 
 #### Python 3.5
