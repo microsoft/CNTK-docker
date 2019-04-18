@@ -1,13 +1,36 @@
 **See how to use the images in [CNTK Wiki](https://docs.microsoft.com/en-us/cognitive-toolkit/CNTK-Docker-Containers).**
 
-### Version 2 Images (CNTK v2.6 and above)
+### Version 2 Images (CNTK v2.7 and above)
+The following tags default to images based on ubuntu:16.04 (CPU) and nvidia/cuda:10.0-runtime-ubuntu16.04 (v.2.x GPU).
+
+#### Python 3.5
+
+**GPU ([NVIDIA Docker](https://github.com/nvidia/nvidia-docker) is required)**
+
+* `2.7-gpu-python3.5-cuda10.0-cudnn7.3`, `latest` ([/ubuntu-16.04/version_2/gpu/runtime/python-3/Dockerfile](https://github.com/Microsoft/CNTK-docker/blob/v2.7/ubuntu-16.04/version_2/gpu/runtime/python-3/Dockerfile))
+
+**CPU**
+
+* `2.7-cpu-python3.5` ([/ubuntu-16.04/version_2/cpu/runtime/python-3/Dockerfile](https://github.com/Microsoft/CNTK-docker/blob/v2.7/ubuntu-16.04/version_2/cpu/runtime/python-3/Dockerfile))
+
+#### Python 2.7
+
+**GPU ([NVIDIA Docker](https://github.com/nvidia/nvidia-docker) is required)**
+
+* `2.7-gpu-python2.7-cuda10.0-cudnn7.3` ([/ubuntu-16.04/version_2/gpu/runtime/python-2/Dockerfile](https://github.com/Microsoft/CNTK-docker/blob/v2.7/ubuntu-16.04/version_2/gpu/runtime/python-2/Dockerfile))
+
+**CPU**
+
+* `2.7-cpu-python2.7` ([/ubuntu-16.04/version_2/cpu/runtime/python-2/Dockerfile](https://github.com/Microsoft/CNTK-docker/blob/v2.7/ubuntu-16.04/version_2/cpu/runtime/python-2/Dockerfile))
+
+### Version 2 Images (CNTK v2.6)
 The following tags default to images based on ubuntu:16.04 (CPU) and nvidia/cuda:9.0-runtime-ubuntu16.04 (v.2.x GPU).
 
 #### Python 3.5
 
 **GPU ([NVIDIA Docker](https://github.com/nvidia/nvidia-docker) is required)**
 
-* `2.6-gpu-python3.5-cuda9.0-cudnn7.0`, `latest` ([/ubuntu-16.04/version_2/gpu/runtime/python-3/Dockerfile](https://github.com/Microsoft/CNTK-docker/blob/v2.6/ubuntu-16.04/version_2/gpu/runtime/python-3/Dockerfile))
+* `2.6-gpu-python3.5-cuda9.0-cudnn7.0` ([/ubuntu-16.04/version_2/gpu/runtime/python-3/Dockerfile](https://github.com/Microsoft/CNTK-docker/blob/v2.6/ubuntu-16.04/version_2/gpu/runtime/python-3/Dockerfile))
 
 **CPU**
 
@@ -30,7 +53,7 @@ The following tags default to images based on ubuntu:16.04 (CPU) and nvidia/cuda
 
 **GPU ([NVIDIA Docker](https://github.com/nvidia/nvidia-docker) is required)**
 
-* `2.5.1-gpu-python3.5-cuda9.0-cudnn7.0`, `latest` ([/ubuntu-16.04/version_2/gpu/runtime/python-3/Dockerfile](https://github.com/Microsoft/CNTK-docker/blob/v2.5.1/ubuntu-16.04/version_2/gpu/runtime/python-3/Dockerfile))
+* `2.5.1-gpu-python3.5-cuda9.0-cudnn7.0` ([/ubuntu-16.04/version_2/gpu/runtime/python-3/Dockerfile](https://github.com/Microsoft/CNTK-docker/blob/v2.5.1/ubuntu-16.04/version_2/gpu/runtime/python-3/Dockerfile))
 
 **CPU**
 
@@ -53,7 +76,7 @@ The following tags default to images based on ubuntu:16.04 (CPU) and nvidia/cuda
 
 **GPU ([NVIDIA Docker](https://github.com/nvidia/nvidia-docker) is required)**
 
-* `2.5-gpu-python3.5-cuda9.0-cudnn7.0`, `latest` ([/ubuntu-16.04/version_2/gpu/runtime/python-3/Dockerfile](https://github.com/Microsoft/CNTK-docker/blob/v2.5/ubuntu-16.04/version_2/gpu/runtime/python-3/Dockerfile))
+* `2.5-gpu-python3.5-cuda9.0-cudnn7.0` ([/ubuntu-16.04/version_2/gpu/runtime/python-3/Dockerfile](https://github.com/Microsoft/CNTK-docker/blob/v2.5/ubuntu-16.04/version_2/gpu/runtime/python-3/Dockerfile))
 
 **CPU**
 
@@ -76,7 +99,7 @@ The following tags default to images based on ubuntu:16.04 (CPU) and nvidia/cuda
 
 **GPU ([NVIDIA Docker](https://github.com/nvidia/nvidia-docker) is required)**
 
-* `2.4-gpu-python3.5-cuda9.0-cudnn7.0`, `latest` ([/ubuntu-16.04/version_2/gpu/runtime/python-3/Dockerfile](https://github.com/Microsoft/CNTK-docker/blob/v2.4/ubuntu-16.04/version_2/gpu/runtime/python-3/Dockerfile))
+* `2.4-gpu-python3.5-cuda9.0-cudnn7.0` ([/ubuntu-16.04/version_2/gpu/runtime/python-3/Dockerfile](https://github.com/Microsoft/CNTK-docker/blob/v2.4/ubuntu-16.04/version_2/gpu/runtime/python-3/Dockerfile))
 
 **1BitSGD ([NVIDIA Docker](https://github.com/nvidia/nvidia-docker) is required)**
 
@@ -108,7 +131,7 @@ The following tags default to images based on ubuntu:14.04 (CPU), nvidia/cuda:8.
 
 **GPU ([NVIDIA Docker](https://github.com/nvidia/nvidia-docker) is required)**
 
-* `2.3-gpu-python3.5-cuda8.0-cudnn6.0`, `latest` ([/ubuntu-14.04/version_2/gpu/runtime/python-3/Dockerfile](https://github.com/Microsoft/CNTK-docker/blob/v2.3/ubuntu-14.04/version_2/gpu/runtime/python-3/Dockerfile))
+* `2.3-gpu-python3.5-cuda8.0-cudnn6.0` ([/ubuntu-14.04/version_2/gpu/runtime/python-3/Dockerfile](https://github.com/Microsoft/CNTK-docker/blob/v2.3/ubuntu-14.04/version_2/gpu/runtime/python-3/Dockerfile))
 * `2.2-gpu-python3.5-cuda8.0-cudnn6.0` ([/ubuntu-14.04/version_2/gpu/runtime/python-3/Dockerfile](https://github.com/Microsoft/CNTK-docker/blob/v2.2/ubuntu-14.04/version_2/gpu/runtime/python-3/Dockerfile))
 * `2.1-gpu-python3.5-cuda8.0-cudnn6.0` ([/ubuntu-14.04/version_2/gpu/runtime/python-3/Dockerfile](https://github.com/Microsoft/CNTK-docker/blob/v2.1/ubuntu-14.04/version_2/gpu/runtime/python-3/Dockerfile))
 * `2.0-gpu-python3.5-cuda8.0-cudnn5.1` ([/ubuntu-14.04/version_2/gpu/runtime/python-3/Dockerfile](https://github.com/Microsoft/CNTK-docker/blob/v2.0/ubuntu-14.04/version_2/gpu/runtime/python-3/Dockerfile))
